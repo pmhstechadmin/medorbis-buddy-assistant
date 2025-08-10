@@ -1,9 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/medorbis-hero.jpg";
+import Layout from "@/components/Layout";
+
 
 const Index = () => {
-  const signupUrl = "https://ai-assistant.medorbis.ai/?ref=medorbis.ai";
+  const signupUrl = "/register";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -14,7 +16,7 @@ const Index = () => {
       target: `${window.location.origin}/?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
-  };
+  } as const;
 
   return (
     <>
@@ -25,18 +27,7 @@ const Index = () => {
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
-      <header className="w-full">
-        <nav className="container flex items-center justify-between py-6">
-          <div className="font-display text-2xl tracking-tight">Medorbis AI</div>
-          <div className="flex items-center gap-3">
-            <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Features</a>
-            <a href="#video" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Intro</a>
-            <Button asChild>
-              <a href={signupUrl} aria-label="Sign up to Medorbis AI">Sign Up</a>
-            </Button>
-          </div>
-        </nav>
-      </header>
+      <Layout>
 
       <main>
         {/* Hero */}
@@ -120,11 +111,7 @@ const Index = () => {
         </section>
       </main>
 
-      <footer className="border-t">
-        <div className="container py-8 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Medorbis AI. All rights reserved.
-        </div>
-      </footer>
+      </Layout>
     </>
   );
 };
