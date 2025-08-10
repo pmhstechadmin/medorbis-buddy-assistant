@@ -21,6 +21,7 @@ const Index = () => {
       <Helmet>
         <title>Medorbis AI Assistant | Transform Your Medical Studies</title>
         <meta name="description" content="A 24/7 AI medical assistant built by medical educators. Study smarter with structure and confidence." />
+        <link rel="canonical" href={`${window.location.origin}/`} />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
